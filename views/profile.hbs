@@ -1,0 +1,45 @@
+{{#if currentUser}}
+<h1>hello {{currentUser.firstName}}</h1>
+{{/if}}
+<ul>
+  {{#if currentUser}}
+  <h2>Profile</h2>
+  <li> {{currentUser.firstName}}</li>
+  <li> {{currentUser.lastName}}</li>
+  <li> {{currentUser.email}}</li>
+  <li> {{currentUser.bDay}}</li>
+  <li> {{currentUser.addres}}</li>
+  <li> {{currentUser.age}}</li>
+  <li> {{currentUser.skills}}</li>
+  <li> {{currentUser.wishes}}</li>
+
+  {{/if}}
+</ul>
+
+
+
+
+{{!-- <form name="profileForm">
+  <select name="categories" id="category">
+    {{#each allCategories}}
+    <option value="{{this.id}}">{{this.title}}</option>
+    {{/each}}
+  </select>
+  <input type="text" name="articleContent">
+  <input type="submit">
+</form>
+<div>
+  <ul id="list-of-articles">
+    {{#each allArticles}}
+    <li id="id-{{this.id}}">
+
+      {{this.title}}
+      <button name="editArticle">Edit</button>
+      <button name="deleteArticle">Delete</button>
+    </li>
+    {{/each}}
+  </ul>
+</div>
+
+
+<script defer src="/js/articles.js"></script> --}}

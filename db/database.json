@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "superbob",
+    "username": "blagoadmin",
     "password": "123",
-    "database": "trust",
+    "database": "blago",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

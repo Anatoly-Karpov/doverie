@@ -28,12 +28,16 @@ app.use(cookieParser());
 app.use(session({
   secret: process.env.SECRET ?? '101010',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: { secure: false },
   name: 'authname',
 }));
 // End middleware section
-
+app.use((req, res, next) => {
+  console.log('=====>>>>req.session', req.session.user);
+  res.locals.user = req.session.user
+  next()
+})
 // Start routes section
 app.use('/', indexRouter); // используем indexRouter для обработки всех запросов, которые начинаются с /
 // app.use('/users', usersRouter);
