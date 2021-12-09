@@ -26,7 +26,7 @@ router.get('/registration', (req, res) => {
 router.get('/profile', async (req, res) => {
 
   // const allUsers = await Users.findAll()
-  const {nameUser, id, email} = req.session.user
+  const {firstName, id, email} = req.session.user
   const currentUser = await Users.findOne({where: {id}})
   // console.log('====>>>>req.session', req.session.user);
   res.render('profile', { currentUser} )
@@ -37,7 +37,8 @@ router.post('/registration', async (req, res) => {
     const user = await Users.create({ firstName, lastName, email, password: sha256(password), bDay, dDay, addres, age, skills, wishes, createdAt: new Date(), updatedAt: new Date() }); // создаем юзера в бд
     // console.log(user);
     // console.log(req.session);
-    req.session.name = firstName; // ЗАПИСЫВАЕМ В СЕССИЮ ИМЯ ТОЛЬКО ЧТО ЗАРЕГИСТРИРОВАННОГО ЮЗЕРА
+     // ЗАПИСЫВАЕМ В СЕССИЮ ИМЯ ТОЛЬКО ЧТО ЗАРЕГИСТРИРОВАННОГО ЮЗЕРА
+    req.session.user = { id: user.id, email: user.email, firstName: user.firstName };
     // redirect user page
     // res.sendStatus(200)
     res.redirect(`/profile`); // редирект на страницу лк
