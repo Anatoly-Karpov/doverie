@@ -10,9 +10,10 @@ const indexRouter = require('./routes/indexRouter');
 const usersRouter = require('./routes/usersRouter');
 
 const app = express(); // app - экземпляр сервера
-const PORT = 3000;
+
 
 // Start server settings
+require('dotenv').config(); 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs'); // дает нам право рендерить hbs в res.render()
 // End server settings
@@ -34,8 +35,8 @@ app.use(session({
 }));
 // End middleware section
 app.use((req, res, next) => {
-  console.log('=====>>>>req.session', req.session.user);
-  res.locals.user = req.session.user
+  console.log('=====>>>>req.session', req.session.name);
+  res.locals.username = req.session.name
   next()
 })
 // Start routes section
@@ -43,6 +44,7 @@ app.use('/', indexRouter); // используем indexRouter для обраб
 // app.use('/users', usersRouter);
 // End routes section
 
-app.listen(PORT, () => {
-  console.log(`server started PORT: ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`server started PORT: ${PORT}`);
+// });
+app.listen(process.env.PORT ?? 3000)

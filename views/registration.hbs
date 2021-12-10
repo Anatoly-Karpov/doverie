@@ -4,10 +4,28 @@
   <input type="firstName" name="firstName" placeholder="Имя ">
   <input type="lastName" name="lastName" placeholder="Фамилия">
   <input type="date" name="bDay" placeholder="Дата рождения">
-  <input type="age" name="age" placeholder="Возраст">
-  <input type="addres" name="addres" placeholder="Адрес">
-  <input type="skills" name="skills" placeholder="Навыки">
-  <input type="wishes" name="wishes" placeholder="Желания">
+  {{!-- <input type="skills" name="skills" placeholder="Навыки">
+  <input type="wishes" name="wishes" placeholder="Желания"> --}}
 
   <input type="submit">
 </form>
+
+<div class="row">
+  <div class="col-6">
+    <form name="registrationForm" method="POST" action="/registration">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" placeholder="email" name="email" value="{{user.email}}">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Name</label>
+        <input type="text" class="form-control" placeholder="name" name="firstName" value="{{user.firstName}}">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">B-day</label>
+        <input type="date" placeholder="birthday" name="bDay" class="form-control" value="{{user.bDay}}">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

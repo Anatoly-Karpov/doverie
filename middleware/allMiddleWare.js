@@ -6,8 +6,11 @@ const hello = (req, res, next) => {
   next();
 };
 
-// const something = (req, req, next) {
+const userChecker = (req, res, next) => { // этот мидлвер пропускает пользователя, если он авторизован (т.е если есть ключ name в сессии) или редиректит на главную, если он не авторизован (см стр 11 в index.js роутере )
+  if (req.session.name) {
+    return next();
+  }
+  res.redirect('/');
+}
 
-// }
-
-module.exports = { hello }
+module.exports = { hello, userChecker }

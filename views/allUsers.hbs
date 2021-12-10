@@ -1,22 +1,23 @@
 
-<h1>What's uuuuuuuuuup {{user.firstName}}</h1>
+
+<h1>User - {{users.name}}</h1>
 
 
 
 <div class="row">
   <div class="col-6">
-    <form name="editUserForm" data-userid="{{user.id}}">
+    <form name="edirUserForm" data-userid="{{users.id}}">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" placeholder="email" name="email" value="{{user.email}}">
+        <input type="email" class="form-control" placeholder="email" name="email" value="{{users.email}}">
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Name</label>
-        <input type="text" class="form-control" placeholder="name" name="firstName" value="{{user.firstName}}">
+        <input type="text" class="form-control" placeholder="name" name="name" value="{{users.firstName}}">
       </div>
       <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">B-day</label>
-        <input type="date" placeholder="birthday" name="bDay" class="form-control" value="{{user.bDay}}">
+        <input type="date" placeholder="birthday" name="birthday" class="form-control" value="{{user.bDay}}">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -26,5 +27,3 @@
 <script src="/javascripts/client.js">
 
 </script>
-
-
