@@ -7,7 +7,6 @@ const session = require('express-session');
 const sha256 = require('sha256');
 
 const indexRouter = require('./routes/indexRouter');
-const usersRouter = require('./routes/usersRouter');
 
 const app = express(); // app - экземпляр сервера
 
@@ -19,7 +18,6 @@ app.set('view engine', 'hbs'); // дает нам право рендерить 
 // End server settings
 
 // Start middleware section
-
 app.use(logger('dev'));
 app.use(express.json()); // Распознавание входящего объекта в POST-запросе как объекта JSON
 
@@ -35,16 +33,12 @@ app.use(session({
 }));
 // End middleware section
 app.use((req, res, next) => {
-  console.log('=====>>>>req.session', req.session.name);
   res.locals.username = req.session.name
   next()
 })
 // Start routes section
 app.use('/', indexRouter); // используем indexRouter для обработки всех запросов, которые начинаются с /
-// app.use('/users', usersRouter);
+
 // End routes section
 
-// app.listen(PORT, () => {
-//   console.log(`server started PORT: ${PORT}`);
-// });
 app.listen(process.env.PORT ?? 3000)

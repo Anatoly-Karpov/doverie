@@ -18,7 +18,8 @@
         <label for="exampleInputPassword1" class="form-label">B-day</label>
         <input type="date" placeholder="birthday" name="bDay" class="form-control" value="{{user.bDay}}">
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary">Edit</button>
+      <button id="deleteButton" type="delete" data-userid="{{user.id}}" data-action="delete" class="btn btn-primary">Delete</button>
     </form>
   </div>
 </div>

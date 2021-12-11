@@ -1,30 +1,9 @@
-
-// const { editProfile } = document.forms;
-// const { id } = document.forms.editProfile
-
-// editProfile.addEventListener('submit', async (e) => {
-//   e.preventDefault()
-
-//   const temp = document.editProfile.title.value
-//   const response = await fetch(`/profile/edit/${id}`, {
-//     method: 'PUT',
-//     headers: {
-//       'Content-type': 'application/json',
-//     },
-//     body: JSON.stringify({ title: temp }),
-
-//   })
-//   const temp1 = await response.json()
-//   document.editProfile.title.value = temp1.title;
-//   window.location.assign('/profile')
-// }
-// )
-
 const { editUserForm } = document.forms;
-console.log(editUserForm);
+const deleteButton = document.getElementById('deleteButton');
 
 editUserForm.addEventListener('submit', async (e) => {
   e.preventDefault();
+  console.log(editUserForm.firstName.value);
   const updatedUser = { firstName: editUserForm.firstName.value, email: editUserForm.email.value, bDay: editUserForm.bDay.value };
   const updRequest = await fetch(`/${editUserForm.dataset.userid}`, {
     method: 'PUT',
@@ -37,6 +16,22 @@ editUserForm.addEventListener('submit', async (e) => {
     alert('данные обновлены');
   } else {
     alert('какая-то ошибка, попробуйте еще раз позднее');
+  }
+});
+
+deleteButton.addEventListener('click', async (e) => {
+  e.preventDefault();
+  const { userid } = e.target.dataset; // достаем userid из дата-атрбутов нажатой кнопки
+  if (e.target.dataset.action === 'delete') {
+    const delRequest = await fetch(`/${userid}`, { method: 'DELETE' }); // методом DELETE обращаемся на адрес /users/айдиюзера
+    if (delRequest.status >= 200) { // если удалось удалить, возвращаем статус 222
+      alert('user delete')
+      window.location.assign('/registration')
+    } else { // если не удалось удалить, статус будет другой (это и есть идемпотентность)
+      alert('этого юзера давно уже тут нет');
+    }
+  } else if (e.target.dataset.action === 'edit') {
+    window.location.assign(`/${userid}`); // редирект на страницу редактирования
   }
 });
 
