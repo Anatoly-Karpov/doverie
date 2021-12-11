@@ -1,0 +1,59 @@
+
+
+
+<div class="row">
+  <div class="col-6">
+    <form name="registrationForm" method="POST" action="/registration">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          placeholder="email"
+          name="email"
+          value="{{user.email}}"
+        />
+        <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Пароль</label>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="password"
+          name="password"
+          value="{{user.password}}"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Имя</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="name"
+          name="firstName"
+          value="{{user.firstName}}"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Фамилия</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="lastName"
+          name="lastName"
+          value="{{user.lastName}}"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">B-day</label>
+        <input
+          type="date"
+          placeholder="birthday"
+          name="bDay"
+          class="form-control"
+          value="{{user.bDay}}"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
